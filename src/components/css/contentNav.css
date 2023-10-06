@@ -1,0 +1,28 @@
+.contentnav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #F0F0F0;
+}
+.contentnav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.contentnav ul li{
+    list-style: none;
+    padding-left: 15px;
+}
+.contentnav ul li a{
+    text-decoration: none;
+    padding: 10px;
+}
+.contentnav ul li a:hover{
+    background-color: #2962FF;
+    color: #FFFFFF;
+    border-radius: 5px;
+
+}

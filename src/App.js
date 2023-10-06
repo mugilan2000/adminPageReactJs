@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import AdminLogin from './components/AdminLogin';
+import './components/css/login.css';
+import AdminDashboard from './components/AdminDashboard';
+import UsersList from './components/UsersList';
+import AddUser from './components/AddUser';
+import UpdateUser from './components/UpdateUser';
 
 function App() {
+  const API_URL = 'http://localhost/react/api.php';
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<AdminLogin API_URL={API_URL}/>} />
+          <Route path='/dashboard' element={<AdminDashboard API_URL={API_URL}/>} />
+          <Route path='/userslist' element={<UsersList API_URL={API_URL}/>} />
+          <Route path='/adduser' element={<AddUser API_URL={API_URL}/>} />
+          <Route path='/update/:id' element={<UpdateUser API_URL={API_URL}/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
