@@ -1,9 +1,14 @@
 import React from 'react'
 import './css/dashboard.css';
 import loginImage from '../login_image.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const DashboardHeader = () => {
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        window.localStorage.removeItem("isLoggedIn");
+        navigate("/")
+    }
   return (
     <header className=''>
         <img src={loginImage} alt='login_image' className='dashboardImage'/>
@@ -18,20 +23,20 @@ const DashboardHeader = () => {
                     <Link to="/">Images List</Link>
                 </li>
                 <li>
-                    <Link to="/">Contacts List</Link>
+                    <Link to="/querieslist">Contacts List</Link>
                 </li>
                 <li>
                     <Link to="/">User Upload Image</Link>
                 </li>
                 <li>
-                    <Link to="/">Add Admin User</Link>
+                    <Link to="/addadminuser">Add Admin User</Link>
                 </li>
                 <li>
                     <Link to="/adduser">Add User</Link>
                 </li>
             </ul>
         </nav>
-        <Link to="/" className='logout'>Logout</Link>
+        <Link to="/" className='logout' onClick={handleLogout}>Logout</Link>
     </header>
   )
 }

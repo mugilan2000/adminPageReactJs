@@ -1,0 +1,38 @@
+.page{
+    width: 25%;
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.prev{
+    text-decoration: none;
+    color: #2962FF;
+}
+.next{
+    text-decoration: none;
+    color: #2962FF;
+}
+.pageNo{
+    font-size: 14px;
+    margin: 0;
+    color: #4C606A;
+}
+.showRecords{
+    font-size: 14px;
+    margin: 0;
+    color: #4C606A;
+}
+.plusbtn{
+    font-size: 14px;
+    margin: 0;
+    border: none;
+    background-color: #F0F0F0;
+}
+.minusbtn{
+    font-size: 16px;
+    margin: 0;
+    border: none;
+    background-color: #F0F0F0;
+}

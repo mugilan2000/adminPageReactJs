@@ -3,7 +3,7 @@ import './css/login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const LoginInputs = ({API_URL}) => {
+const LoginInputs = ({API_URL, isLoggedIn, setIsLoggedIn}) => {
 
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -48,14 +48,18 @@ const LoginInputs = ({API_URL}) => {
       })
       const res = response.data;
       console.log(res[0].result);
+      console.log(res[0].isLoggedIn);
+      
       if(res[0].result === "Invalid User" || res[0].result === "Invalid Password"){
             setError(res[0].result)
+            
           }
           else{
             setMsg(res[0].result)
             setTimeout(function(){
               navigate('/dashboard')
             }, 3000)
+            window.localStorage.setItem("isLoggedIn", true);
           }
         // var url = API_URL;
         // var headers = {
@@ -93,6 +97,7 @@ const LoginInputs = ({API_URL}) => {
     else{
       setError("Please fill details")
     }
+    
     setEmail('');
     setPassword('');
   }

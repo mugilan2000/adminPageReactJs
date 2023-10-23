@@ -5,14 +5,24 @@ import './css/usersList.css';
 import ListOfUsers from './ListOfUsers';
 import ContentNavigation from './ContentNavigation';
 import { Link, useNavigate } from 'react-router-dom';
+import Pagination from './Pagination';
 
-const UsersList = ({API_URL}) => {
+const UsersList = ({ API_URL, export_URL }) => {
 
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const [search, setSearch] = useState('');
   const [msg, setMsg] = useState('');
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage, setRecordPerPage] = useState(5);
   
+  const lastIndex = currentPage * recordsPerPage;
+  const firstIndex = lastIndex - recordsPerPage;
+  const records = users.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(users.length / recordsPerPage);
+  const numbers = [...Array(npage + 1).keys()].slice(1);
+
 
   const handleUserDelete = async (id) => {
     console.log(id);
@@ -22,7 +32,7 @@ const UsersList = ({API_URL}) => {
       username: null,
       email: null,
       password: null,
-      operation:'deleteUser'
+      operation: 'deleteUser'
     }
     console.log(JSON.stringify(deleteId));
 
@@ -37,30 +47,30 @@ const UsersList = ({API_URL}) => {
     setMsg('User - ' + res[0].username + ' Deleted Successfully');
     setTimeout(() => {
       setMsg('')
-  }, 5000)
+    }, 5000)
     fetchUsers();
   }
   const fetchUsers = async () => {
 
     const userData = {
-      id:null,
+      id: null,
       username: null,
       email: null,
       password: null,
-      operation:'userlist'
-  }
-   
+      operation: 'userlist'
+    }
+
     const response = await axios({
       method: 'post',
       url: API_URL,
       data: JSON.stringify(userData)
     });
     const res = response.data;
-    
-    if(res[0].result === "No Data Found"){
+
+    if (res[0].result === "No Data Found") {
       setError(res[0].result);
     }
-    else{
+    else {
       setUsers(res);
     }
   }
@@ -74,16 +84,25 @@ const UsersList = ({API_URL}) => {
     <main>
       <ContentNavigation />
       <div className='searchWindow'>
-      <form className='searchForm'>
-        <input type='text' placeholder='Search User' value={search} onChange={(e) => setSearch(e.target.value)}/>
-      </form>
-      <p className='success'>{msg}</p>
-      <Link to="http://localhost/react/export.php" ><img src={excelIcon} alt='excelIcon' className='excelicon' role='button'></img> </Link>
+        <form className='searchForm'>
+          <input type='text' placeholder='Search User' value={search} onChange={(e) => setSearch(e.target.value)} />
+        </form>
+        <p className='success'>{msg}</p>
+        <Link to={export_URL} ><img src={excelIcon} alt='excelIcon' className='excelicon' role='button'></img> </Link>
       </div>
-      <ListOfUsers 
-      users = {users.filter(user => (user.username).includes(search))}
-      error = {error}
-      handleUserDelete = {handleUserDelete}
+      <ListOfUsers
+        users={records.filter(user => (user.username).includes(search))}
+        error={error}
+        handleUserDelete={handleUserDelete}
+      />
+      <Pagination
+      currentPage = {currentPage}
+      setCurrentPage = {setCurrentPage}
+      recordsPerPage = {recordsPerPage}
+      setRecordPerPage = {setRecordPerPage}
+      npage = {npage}
+      firstIndex={firstIndex}
+      lastIndex={lastIndex}
       />
     </main>
   )

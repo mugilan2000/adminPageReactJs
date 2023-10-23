@@ -8,6 +8,7 @@ const DashboardContent = ({API_URL}) => {
     const [totalImages, setTotalImages] = useState(0);
     const [totalQueries, setTotalQueries] = useState(0);
     const [totalUserImages, setTotalUserImages] = useState(0);
+    const [totalAdminUsers, setTotalAdminUsers] = useState(0);
 
     useEffect(() => {
     const fetchTotalUsers = async () =>{
@@ -30,6 +31,7 @@ const DashboardContent = ({API_URL}) => {
             setTotalImages(res1[0].totalImages);
             setTotalQueries(res1[0].totalQueries);
             setTotalUserImages(res1[0].totalUserImages);
+            setTotalAdminUsers(res1[0].totalAdminUsers);
         } catch(err){
             if(err.response){
                 console.log(err.response.data)
@@ -71,7 +73,7 @@ const DashboardContent = ({API_URL}) => {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Total Queries - <span>{totalQueries}</span></h5>
-                            <Link to="/">View Queries</Link>
+                            <Link to="/querieslist">View Queries</Link>
                         </div>
                     </div>
                 </div>
@@ -88,6 +90,14 @@ const DashboardContent = ({API_URL}) => {
                         <div className="card-body">
                             <h5 className="card-title">Manage Insta Post</h5>
                             <Link to="/">View Post</Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-lg-4 mb-4">
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Total Admin Users - <span>{totalAdminUsers}</span></h5>
+                            <Link to="/adminuserslist">View Users</Link>
                         </div>
                     </div>
                 </div>
