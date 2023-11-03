@@ -1,7 +1,7 @@
 import React from 'react'
 import ListAdminUsers from './ListAdminUsers'
 
-const ListOfAdminUsers = ({adminUsers, error}) => {
+const ListOfAdminUsers = ({adminUsers, error, handleAdminUserDelete}) => {
   return (
     <>
     {
@@ -9,6 +9,7 @@ const ListOfAdminUsers = ({adminUsers, error}) => {
             <ListAdminUsers 
                 adminUsers = {adminUsers}
                 error = {error}
+                handleAdminUserDelete = {handleAdminUserDelete}
             />
         ) : (
             <p>No Admin Users</p>

@@ -10,6 +10,8 @@ import QueriesList from './components/QueriesList';
 import { useState } from 'react';
 import AddAdminUser from './components/AddAdminUser';
 import AdminUsersList from './components/AdminUsersList';
+import UpdateAdminusers from './components/UpdateAdminusers';
+import UpdateAdminPwd from './components/UpdateAdminPwd';
 
 function App() {
   const API_URL = 'http://localhost/react/api.php';
@@ -33,7 +35,8 @@ function App() {
           <Route path='/addadminuser' element={<AddAdminUser API_URL={API_URL}/>} />
           <Route path='/adminuserslist' element={<AdminUsersList API_URL={API_URL}/>} />
           <Route path='/update/:id' element={<UpdateUser API_URL={API_URL} />} />
-
+          <Route path='/adminupdate/:id' element={<UpdateAdminusers API_URL={API_URL} />} />
+          <Route path='/updateadminpwd/:id' element={<UpdateAdminPwd API_URL={API_URL}/>} />
 
         </Routes>
 

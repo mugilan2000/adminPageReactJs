@@ -48,13 +48,42 @@ const AdminUsersList = ({ API_URL }) => {
         fetchAdminUsers();
       }, [])
 
+      const handleAdminUserDelete = async (id) => {
+        console.log(id);
+    
+        const deleteId = {
+          id: id,
+          username: null,
+          email: null,
+          password: null,
+          operation: 'deleteAdminUser'
+        }
+        console.log(JSON.stringify(deleteId));
+    
+        const response = await axios({
+          method: 'post',
+          url: API_URL,
+          data: JSON.stringify(deleteId)
+        });
+    
+        const res = response.data;
+        console.log(res);
+        setMsg('Admin User - ' + res[0].username + ' Deleted Successfully');
+        setTimeout(() => {
+          setMsg('')
+        }, 5000)
+        fetchAdminUsers();
+      }
+
 
     return (
         <>
             <ContentNavigation />
+            <p className='success'>{msg}</p>
             <ListOfAdminUsers 
             adminUsers = {adminUsers}
             error = {error}
+            handleAdminUserDelete = {handleAdminUserDelete}
             />
         </>
     )
