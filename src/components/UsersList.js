@@ -23,6 +23,8 @@ const UsersList = ({ API_URL, export_URL }) => {
   const npage = Math.ceil(users.length / recordsPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
+  let text = "Are you sure want to delete the user?";
+
 
   const handleUserDelete = async (id) => {
     console.log(id);
@@ -36,18 +38,26 @@ const UsersList = ({ API_URL, export_URL }) => {
     }
     console.log(JSON.stringify(deleteId));
 
-    const response = await axios({
-      method: 'post',
-      url: API_URL,
-      data: JSON.stringify(deleteId)
-    });
-
-    const res = response.data;
-    console.log(res);
-    setMsg('User - ' + res[0].username + ' Deleted Successfully');
-    setTimeout(() => {
-      setMsg('')
-    }, 5000)
+    if(window.confirm(text) == true){
+      const response = await axios({
+        method: 'post',
+        url: API_URL,
+        data: JSON.stringify(deleteId)
+      });
+  
+      const res = response.data;
+      console.log(res);
+      setMsg('User - ' + res[0].username + ' Deleted Successfully');
+      setTimeout(() => {
+        setMsg('')
+      }, 5000)
+    }
+    else{
+      setMsg('User delete operation is cancelled')
+      setTimeout(()=> {
+        setMsg('')
+      }, 5000);
+    }
     fetchUsers();
   }
   const fetchUsers = async () => {

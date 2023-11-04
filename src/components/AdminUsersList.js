@@ -18,6 +18,8 @@ const AdminUsersList = ({ API_URL }) => {
     const npage = Math.ceil(adminUsers.length / recordsPerPage);
     const numbers = [...Array(npage + 1).keys()].slice(1);
 
+    let admintext = "Are you sure want to delete admin user?";
+
 
     const fetchAdminUsers = async () => {
 
@@ -60,18 +62,26 @@ const AdminUsersList = ({ API_URL }) => {
         }
         console.log(JSON.stringify(deleteId));
     
-        const response = await axios({
-          method: 'post',
-          url: API_URL,
-          data: JSON.stringify(deleteId)
-        });
-    
-        const res = response.data;
-        console.log(res);
-        setMsg('Admin User - ' + res[0].username + ' Deleted Successfully');
-        setTimeout(() => {
-          setMsg('')
-        }, 5000)
+        if(window.confirm(admintext) == true){
+          const response = await axios({
+            method: 'post',
+            url: API_URL,
+            data: JSON.stringify(deleteId)
+          });
+      
+          const res = response.data;
+          console.log(res);
+          setMsg('Admin User - ' + res[0].username + ' Deleted Successfully');
+          setTimeout(() => {
+            setMsg('')
+          }, 5000)
+        }
+        else{
+          setMsg('Admin user delete operation is cancelled')
+          setTimeout(()=> {
+            setMsg('')
+          }, 5000);
+        }
         fetchAdminUsers();
       }
 
