@@ -89,6 +89,10 @@ const UsersList = ({ API_URL, export_URL }) => {
     fetchUsers();
   }, [])
 
+  const reloadList = async () => {
+    await fetchUsers();
+  }
+
 
   return (
     <main>
@@ -113,6 +117,7 @@ const UsersList = ({ API_URL, export_URL }) => {
       npage = {npage}
       firstIndex={firstIndex}
       lastIndex={lastIndex}
+      reloadList = {reloadList}
       />
     </main>
   )

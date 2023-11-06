@@ -65,7 +65,7 @@ const DashboardContent = ({API_URL}) => {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Total Images - <span>{totalImages}</span></h5>
-                            <Link to="/">View Images</Link>
+                            <Link to="/imageslist">View Images</Link>
                         </div>
                     </div>
                 </div>

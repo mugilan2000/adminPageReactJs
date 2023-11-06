@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './css/pagination.css';
+import reloadIcon from '../reload.svg';
+import uparrow from '../up-arrow.svg';
+import downarrow from '../down-arrow.svg';
 
-const Pagination = ({currentPage, setCurrentPage, recordsPerPage, setRecordPerPage, npage, firstIndex, lastIndex}) => {
+const Pagination = ({currentPage, setCurrentPage, recordsPerPage, setRecordPerPage, npage, firstIndex, lastIndex, reloadList}) => {
     
     
     const prePage = () => {
@@ -28,8 +31,9 @@ const Pagination = ({currentPage, setCurrentPage, recordsPerPage, setRecordPerPa
                 <Link onClick={nextPage} className='next'>Next</Link>
                 <p className='pageNo'>Page {currentPage + " / " + npage}</p>
                 <p className='showRecords'>Show records - {recordsPerPage}</p>
-                <button className='plusbtn' onClick={increaseCount}>+</button>
-                <button className='minusbtn'onClick={decreaseCount}>-</button>
+                <img src={uparrow} alt='up-arrow' className='plusbtn' role='button' onClick={increaseCount}></img>
+                <img src={downarrow} alt='down-arrow' className='minusbtn' role='button' onClick={decreaseCount}></img>
+                <img src={reloadIcon} alt='reloadIcon' className='reloadbtn' role='button' onClick={reloadList}></img>
             </div>
         </>
     )

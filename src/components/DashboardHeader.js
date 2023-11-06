@@ -20,7 +20,7 @@ const DashboardHeader = () => {
                     <Link to="/userslist">Users List</Link>
                 </li>
                 <li>
-                    <Link to="/">Images List</Link>
+                    <Link to="/imageslist">Images List</Link>
                 </li>
                 <li>
                     <Link to="/querieslist">Contacts List</Link>

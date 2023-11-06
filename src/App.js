@@ -12,10 +12,12 @@ import AddAdminUser from './components/AddAdminUser';
 import AdminUsersList from './components/AdminUsersList';
 import UpdateAdminusers from './components/UpdateAdminusers';
 import UpdateAdminPwd from './components/UpdateAdminPwd';
+import ImagesList from './components/ImagesList';
 
 function App() {
   const API_URL = 'http://localhost/react/api.php';
   const export_URL = 'http://localhost/react/export.php';
+  const upload_image_URL = 'http://localhost/react/uploadImage.php';
   const isLoggedIn = window.localStorage.getItem("isLoggedIn")
 
   return (
@@ -37,6 +39,7 @@ function App() {
           <Route path='/update/:id' element={<UpdateUser API_URL={API_URL} />} />
           <Route path='/adminupdate/:id' element={<UpdateAdminusers API_URL={API_URL} />} />
           <Route path='/updateadminpwd/:id' element={<UpdateAdminPwd API_URL={API_URL}/>} />
+          <Route path='/imageslist' element={<ImagesList upload_image_URL={upload_image_URL} API_URL={API_URL}/>} />
 
         </Routes>
 
