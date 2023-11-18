@@ -13,11 +13,16 @@ import AdminUsersList from './components/AdminUsersList';
 import UpdateAdminusers from './components/UpdateAdminusers';
 import UpdateAdminPwd from './components/UpdateAdminPwd';
 import ImagesList from './components/ImagesList';
+import ViewImage from './components/ViewImage';
 
 function App() {
   const API_URL = 'http://localhost/react/api.php';
   const export_URL = 'http://localhost/react/export.php';
   const upload_image_URL = 'http://localhost/react/uploadImage.php';
+
+  //const API_URL = 'https://mugilanmsm.000webhostapp.com/server/api.php';
+  //const export_URL = 'https://mugilanmsm.000webhostapp.com/server/export.php';
+  //const upload_image_URL = 'https://mugilanmsm.000webhostapp.com/server/uploadImage.php';
   const isLoggedIn = window.localStorage.getItem("isLoggedIn")
 
   return (
@@ -40,6 +45,7 @@ function App() {
           <Route path='/adminupdate/:id' element={<UpdateAdminusers API_URL={API_URL} />} />
           <Route path='/updateadminpwd/:id' element={<UpdateAdminPwd API_URL={API_URL}/>} />
           <Route path='/imageslist' element={<ImagesList upload_image_URL={upload_image_URL} API_URL={API_URL}/>} />
+          <Route path='/viewimage/:id' element={<ViewImage API_URL={API_URL}/>} />
 
         </Routes>
 

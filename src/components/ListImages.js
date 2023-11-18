@@ -20,7 +20,7 @@ const ListImages = ({images, error, handleImageDelete}) => {
               <tr key={image.id}>
                 <td>{image.id}</td>
                 <td>{image.filename}</td>
-                <td><Link>Click to view</Link></td>
+                <td><Link to={`/viewimage/${image.id}`}>Click to view</Link></td>
                 <td><img src={trashIcon} alt='trashIcon' role='button' id='deletebtn' onClick={()=> handleImageDelete(image.id)}></img></td>
               </tr>
             ))}
