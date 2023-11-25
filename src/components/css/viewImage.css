@@ -1,0 +1,18 @@
+.loadimg{
+    height: 480px;
+    padding: 25px 10px;
+}
+.downloadBtn{
+    text-decoration: none;
+    background-color: #2962FF;
+    color: #FEFEFF;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    
+    
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}

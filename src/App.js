@@ -19,6 +19,7 @@ function App() {
   const API_URL = 'http://localhost/react/api.php';
   const export_URL = 'http://localhost/react/export.php';
   const upload_image_URL = 'http://localhost/react/uploadImage.php';
+  const viewImage_URL = 'http://localhost/react/Images/';
 
   //const API_URL = 'https://mugilanmsm.000webhostapp.com/server/api.php';
   //const export_URL = 'https://mugilanmsm.000webhostapp.com/server/export.php';
@@ -45,7 +46,7 @@ function App() {
           <Route path='/adminupdate/:id' element={<UpdateAdminusers API_URL={API_URL} />} />
           <Route path='/updateadminpwd/:id' element={<UpdateAdminPwd API_URL={API_URL}/>} />
           <Route path='/imageslist' element={<ImagesList upload_image_URL={upload_image_URL} API_URL={API_URL}/>} />
-          <Route path='/viewimage/:id' element={<ViewImage API_URL={API_URL}/>} />
+          <Route path='/viewimage/:id' element={<ViewImage API_URL={API_URL} viewImage_URL={viewImage_URL}/>} />
 
         </Routes>
 
