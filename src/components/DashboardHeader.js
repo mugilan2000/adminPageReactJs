@@ -26,7 +26,7 @@ const DashboardHeader = () => {
                     <Link to="/querieslist">Contacts List</Link>
                 </li>
                 <li>
-                    <Link to="/">User Upload Image</Link>
+                    <Link to="/useruploadimageslist">User Upload Image</Link>
                 </li>
                 <li>
                     <Link to="/addadminuser">Add Admin User</Link>

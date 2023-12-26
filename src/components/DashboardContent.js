@@ -56,7 +56,9 @@ const DashboardContent = ({API_URL}) => {
                 <div className="col-lg-4 mb-4">
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Total Users -<span>{totalUsers}</span></h5>
+                            <h5 className="card-title">Total Users -<span style={{
+                                color: "black",
+                            }}>{totalUsers}</span></h5>
                             <Link to="/userslist">View users</Link>
                         </div>
                     </div>
@@ -64,7 +66,9 @@ const DashboardContent = ({API_URL}) => {
                 <div className="col-lg-4 mb-4">
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Total Images - <span>{totalImages}</span></h5>
+                            <h5 className="card-title">Total Images - <span style={{
+                                color: "black"
+                            }}>{totalImages}</span></h5>
                             <Link to="/imageslist">View Images</Link>
                         </div>
                     </div>
@@ -72,7 +76,9 @@ const DashboardContent = ({API_URL}) => {
                 <div className="col-lg-4 mb-4">
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Total Queries - <span>{totalQueries}</span></h5>
+                            <h5 className="card-title">Total Queries - <span style={{
+                                color: "black"
+                            }}>{totalQueries}</span></h5>
                             <Link to="/querieslist">View Queries</Link>
                         </div>
                     </div>
@@ -80,8 +86,21 @@ const DashboardContent = ({API_URL}) => {
                 <div className="col-lg-4 mb-4">
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Total User Upload Imgs - <span>{totalUserImages}</span></h5>
-                            <Link to="/">View Images</Link>
+                            <h5 className="card-title">Total User Upload Imgs - <span style={{
+                                color: "black"
+                            }}>{totalUserImages}</span></h5>
+                            <Link to="/useruploadimageslist">View Images</Link>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="col-lg-4 mb-4">
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Total Admin Users - <span style={{
+                                color: "black"
+                            }}>{totalAdminUsers}</span></h5>
+                            <Link to="/adminuserslist">View Users</Link>
                         </div>
                     </div>
                 </div>
@@ -96,8 +115,8 @@ const DashboardContent = ({API_URL}) => {
                 <div className="col-lg-4 mb-4">
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Total Admin Users - <span>{totalAdminUsers}</span></h5>
-                            <Link to="/adminuserslist">View Users</Link>
+                            <h5 className="card-title">Manage Stories</h5>
+                            <Link to="/storieslist">View Stories</Link>
                         </div>
                     </div>
                 </div>

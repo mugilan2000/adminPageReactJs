@@ -43,13 +43,28 @@ const ViewImage = ({ API_URL, viewImage_URL }) => {
 
     }, [])
 
-    
+    const downloadFile = async (viewImage_URL, fileName, e) => {
+        //e.preventDefault();
+        const url = "http://localhost/react/downloadImage.php?file="+fileName;
+        //console.log(url)
+
+        const aTag = document.createElement("a");
+        aTag.href = url;
+        aTag.setAttribute("download", fileName);
+        document.body.appendChild(aTag);
+        aTag.click();
+        aTag.remove();
+
+        
+    }
     return (
         <>
             <ContentNavigation />
             <div>
                 <img src={viewImage_URL + fileName} className='loadimg' id='viewimg'></img>
+                
             </div>
+            <button className='downloadBtn' onClick={()=>{downloadFile(viewImage_URL, fileName)}}>Download</button>
         </>
     )
 }
