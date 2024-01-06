@@ -2,12 +2,23 @@ import React, { useEffect, useState } from 'react'
 import ContentNavigation from './ContentNavigation'
 import axios from 'axios';
 import ListOfAdminUsers from './ListOfAdminUsers';
+import { useNavigate } from 'react-router-dom';
 
 const AdminUsersList = ({ API_URL }) => {
 
     const [adminUsers, setAdminUsers] = useState([]);
     const [error, setError] = useState('');
     const [msg, setMsg] = useState('');
+
+    const navigate = useNavigate();
+
+    document.title = "Admin Users List"
+
+    useEffect(() => {
+        if(!sessionStorage.getItem('isLoggedIn')){
+          navigate('/')
+        }
+      })
 
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage, setRecordPerPage] = useState(5);

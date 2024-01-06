@@ -4,8 +4,11 @@ import LoginInputs from './LoginInputs'
 import LoginFooter from './LoginFooter'
 
 const AdminLogin = ({ API_URL, isLoggedIn, setIsLoggedIn }) => {
+
+  {document.title = "Admin Login"}
   return (
     <div className='loginForm'>
+      
       <LoginHeader />
       <LoginInputs
         API_URL={API_URL}

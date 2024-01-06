@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ContentNavigation from './ContentNavigation'
 import axios from 'axios';
 import ListOfStories from './ListOfStories';
+import { useNavigate } from 'react-router-dom';
 
 const StoriesList = ({ API_URL }) => {
 
@@ -9,6 +10,14 @@ const StoriesList = ({ API_URL }) => {
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
   const [search, setSearch] = useState('');
+
+  const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!sessionStorage.getItem('isLoggedIn')){
+          navigate('/')
+        }
+      })
 
   const fetchStories = async () => {
 

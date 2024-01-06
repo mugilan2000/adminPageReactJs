@@ -26,7 +26,7 @@ function App() {
   //const API_URL = 'https://mugilanmsm.000webhostapp.com/server/api.php';
   //const export_URL = 'https://mugilanmsm.000webhostapp.com/server/export.php';
   //const upload_image_URL = 'https://mugilanmsm.000webhostapp.com/server/uploadImage.php';
-  const isLoggedIn = window.localStorage.getItem("isLoggedIn")
+  
 
   return (
     <div className="App">

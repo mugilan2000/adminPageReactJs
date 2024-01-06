@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ContentNavigation from './ContentNavigation'
 import UpdateAdminPwdHeader from './UpdateAdminPwdHeader'
 import UpdateAdminPwdInputs from './UpdateAdminPwdInputs'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const UpdateAdminPwd = ({API_URL}) => {
     const { id } = useParams();
+
+    const navigate = useNavigate();
+
+    document.title = "Change Admin Password"
+
+    useEffect(() => {
+        if(!sessionStorage.getItem('isLoggedIn')){
+          navigate('/')
+        }
+      })
     return (
         <>
             <ContentNavigation />

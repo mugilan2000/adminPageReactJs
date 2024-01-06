@@ -3,12 +3,23 @@ import ContentNavigation from './ContentNavigation'
 import axios from 'axios';
 import ListOfUserUploadImg from './ListOfUserUploadImg';
 import Pagination from './Pagination';
+import { useNavigate } from 'react-router-dom';
 
 const UserUploadImgList = ({ API_URL }) => {
 
     const [uImages, setUImages] = useState([]);
     const [error, setError] = useState('');
     const [msg, setMsg] = useState('');
+
+    const navigate = useNavigate();
+
+    document.title = "User upload Images List"
+
+    useEffect(() => {
+        if(!sessionStorage.getItem('isLoggedIn')){
+          navigate('/')
+        }
+      })
 
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage, setRecordPerPage] = useState(5);

@@ -3,17 +3,28 @@ import ContentNavigation from './ContentNavigation'
 import axios from 'axios';
 import ListOfImages from './ListOfImages';
 import excelIcon from '../excel_icon.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './css/imagelist.css';
 import UpdateAdminPwdInputs from './UpdateAdminPwdInputs';
 import Pagination from './Pagination';
 
 const ImagesList = ({ upload_image_URL, API_URL }) => {
+
+  document.title = "Images List"
+  
   const [images, setImages] = useState([]);
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
   const [selectedFile, setSelectedFile] = useState('');
   const [username, setUsername] = useState([]);
+
+  const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!sessionStorage.getItem('isLoggedIn')){
+          navigate('/')
+        }
+      })
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordPerPage] = useState(5);

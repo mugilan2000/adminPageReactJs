@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import './css/contentNav.css';
 
 const ContentNavigation = () => {
+    const handleLogout = () => {
+        sessionStorage.removeItem("isLoggedIn");
+    }
   return (
     <>
     <nav className='contentnav'>
@@ -19,7 +22,7 @@ const ContentNavigation = () => {
                     <Link to="/">Homepage</Link>
                 </li>
                 <li>
-                    <Link to="/">Logout</Link>
+                    <Link onClick={handleLogout}>Logout</Link>
                 </li>
             </ul>
     </nav>

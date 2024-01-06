@@ -1,13 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddUserHeader from './AddUserHeader'
 import AddUserInputs from './AddUserInputs'
 import AddUserFooter from './AddUserFooter'
 import ContentNavigation from './ContentNavigation'
 import './css/addUser.css';
+import { useNavigate } from 'react-router-dom'
 
 const AddUser = ({API_URL}) => {
     const [error, setError] = useState('');
     const [msg, setMsg] = useState('');
+
+    const navigate = useNavigate();
+
+    document.title = "Add user"
+
+    useEffect(() => {
+      if(!sessionStorage.getItem('isLoggedIn')){
+        navigate('/')
+      }
+    })
   return (
     // <main>
     //     <form className='loginInputs'>

@@ -4,11 +4,17 @@ import axios from 'axios';
 import ListQueries from './ListQueries';
 import Pagination from './Pagination';
 import './css/pagination.css'
+import { useNavigate } from 'react-router-dom';
 
 const QueriesList = ({API_URL}) => {
+
+  document.title = "Contacts List"
+
     const [queries, setQueries] = useState([]);
     const [error, setError] = useState('');
     const [msg, setMsg] = useState('');
+
+    const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordPerPage] = useState(5);
@@ -48,6 +54,12 @@ const QueriesList = ({API_URL}) => {
 
         fetchQueries();
       }, [])
+
+      useEffect(() => {
+        if(!sessionStorage.getItem('isLoggedIn')){
+          navigate('/')
+        }
+      })
   return (
     <main>
         <ContentNavigation />

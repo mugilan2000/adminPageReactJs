@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ContentNavigation from './ContentNavigation'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import './css/viewImage.css';
 
@@ -9,7 +9,17 @@ const ViewImage = ({ API_URL, viewImage_URL }) => {
     const { id } = useParams();
     const [fileName, setFileName] = useState('');
 
+    document.title = "View Image"
+
     let [filePath, setFilePath] = useState('');
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!sessionStorage.getItem('isLoggedIn')){
+          navigate('/')
+        }
+      })
 
     useEffect(() => {
         const fetchImageToView = async () => {

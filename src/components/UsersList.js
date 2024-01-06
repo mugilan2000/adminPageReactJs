@@ -9,10 +9,14 @@ import Pagination from './Pagination';
 
 const UsersList = ({ API_URL, export_URL }) => {
 
+  document.title = "Users List"
+
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const [search, setSearch] = useState('');
   const [msg, setMsg] = useState('');
+
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordPerPage] = useState(5);
@@ -88,6 +92,12 @@ const UsersList = ({ API_URL, export_URL }) => {
 
     fetchUsers();
   }, [])
+
+  useEffect(() => {
+    if(!sessionStorage.getItem('isLoggedIn')){
+      navigate('/')
+    }
+  })
 
   const reloadList = async () => {
     await fetchUsers();

@@ -56,10 +56,13 @@ const LoginInputs = ({API_URL, isLoggedIn, setIsLoggedIn}) => {
           }
           else{
             setMsg(res[0].result)
-            setTimeout(function(){
-              navigate('/dashboard')
-            }, 3000)
-            window.localStorage.setItem("isLoggedIn", true);
+            // setTimeout(function(){
+            //   navigate('/dashboard')
+            // }, 3000)
+
+            navigate('/dashboard')
+            //localStorage.setItem("isLoggedIn", true);
+            sessionStorage.setItem("isLoggedIn" , true);
           }
         // var url = API_URL;
         // var headers = {
@@ -107,6 +110,12 @@ const LoginInputs = ({API_URL, isLoggedIn, setIsLoggedIn}) => {
         setMsg('')
     }, 5000)
   },[msg])
+
+  useEffect(() => {
+    if(sessionStorage.getItem('isLoggedIn')){
+      navigate('/dashboard')
+    }
+  })
 
   return (
     <main>

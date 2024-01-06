@@ -6,8 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const DashboardHeader = () => {
     const navigate = useNavigate();
     const handleLogout = () => {
-        window.localStorage.removeItem("isLoggedIn");
-        navigate("/")
+        sessionStorage.removeItem("isLoggedIn");
     }
   return (
     <header className=''>
