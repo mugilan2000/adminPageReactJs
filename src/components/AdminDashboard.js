@@ -15,10 +15,10 @@ const AdminDashboard = ({API_URL}) => {
   })
   return (
     <main className='adminDash'>
-      <div className='dashboardHeader split'>
+      <div className='dashboardHeader'>
         <DashboardHeader />
       </div>
-      <div className='dashboardContent split'>
+      <div className='dashboardContent'>
         <DashboardContent API_URL = {API_URL}/>
       </div>
     </main>

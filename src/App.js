@@ -16,6 +16,7 @@ import ImagesList from './components/ImagesList';
 import ViewImage from './components/ViewImage';
 import UserUploadImgList from './components/UserUploadImgList';
 import StoriesList from './components/StoriesList';
+import ViewAdminProfile from './components/ViewAdminProfile';
 
 function App() {
   const API_URL = 'http://localhost/react/api.php';
@@ -51,6 +52,7 @@ function App() {
           <Route path='/viewimage/:id' element={<ViewImage API_URL={API_URL} viewImage_URL={viewImage_URL}/>} />
           <Route path='/useruploadimageslist' element={<UserUploadImgList API_URL={API_URL}/>} />
           <Route path='/storieslist' element={<StoriesList API_URL={API_URL} />} />
+          <Route path='/adminprofile' element={<ViewAdminProfile API_URL = {API_URL}/>} />
 
         </Routes>
 

@@ -33,6 +33,9 @@ const DashboardHeader = () => {
                 <li>
                     <Link to="/adduser">Add User</Link>
                 </li>
+                <li>
+                    <Link to="/adminprofile">View Profile</Link>
+                </li>
             </ul>
         </nav>
         <Link to="/" className='logout' onClick={handleLogout}>Logout</Link>

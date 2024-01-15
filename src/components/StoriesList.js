@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 const StoriesList = ({ API_URL }) => {
 
+  document.title = "Stories List"
+
   const [stories, setStories] = useState([]);
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
